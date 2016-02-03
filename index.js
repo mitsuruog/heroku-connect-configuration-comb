@@ -33,14 +33,14 @@ function HerokuConnectConfigurationComb(input, output, opts) {
 	opts = opts || {};
 	output = output || input;
 
-	const inputFile = path.join(__dirname, input);
-	const outputFile = path.join(__dirname, output);
+	const inputFile = path.join(process.cwd(), input);
+	const outputFile = path.join(process.cwd(), output);
 
 	fs.readFile(inputFile, { encoding: 'utf-8' }, (err, data) => {
 	  if (err) {
 	    console.error(err);
 	  } else {
-	    fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 2), 'utf-8');
+	    fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 4), 'utf-8');
 	  }
 	});
 

@@ -1,6 +1,6 @@
 {
   "name": "heroku-connect-configuration-comb",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Makes your Heroku Connect Configuration beautiful",
   "license": "MIT",
   "repository": "mitsuruog/heroku-connect-configuration-comb",
