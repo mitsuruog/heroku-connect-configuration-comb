@@ -2,6 +2,8 @@
 
 > Makes your Heroku Connect Configuration beautiful
 
+![thumbnail](thumbnail.png)
+
 ## Install
 
 ```
