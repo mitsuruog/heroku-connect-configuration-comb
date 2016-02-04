@@ -1,6 +1,6 @@
 {
   "name": "heroku-connect-configuration-comb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Makes your Heroku Connect Configuration beautiful",
   "license": "MIT",
   "repository": "mitsuruog/heroku-connect-configuration-comb",
@@ -23,7 +23,8 @@
   "keywords": [
     "cli-app",
     "cli",
-    ""
+    "heroku",
+    "heroku connect"
   ],
   "dependencies": {
     "meow": "^3.6.0"
