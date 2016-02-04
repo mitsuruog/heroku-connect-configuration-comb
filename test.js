@@ -1,7 +1,6 @@
 import test from 'ava';
 import testee from './';
 
-const fs = require('fs');
 const mkdirp = require('mkdirp');
 
 const INPUT_PATH = './fixtures/input.json';

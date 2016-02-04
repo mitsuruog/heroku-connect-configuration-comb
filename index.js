@@ -35,24 +35,26 @@ function HerokuConnectConfigurationComb(input, output, opts) {
 	const inputFile = path.join(process.cwd(), input);
 	const outputFile = path.join(process.cwd(), output);
 
-  return new Promise((resolve, reject) => {
-    fs.readFile(inputFile, {
-  		encoding: 'utf-8'
-  	}, (err, data) => {
-  		if (err) {
-  			console.error(err);
-        reject(err);
-  		} else {
-  			// TODO add options.space
-  			fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 4), 'utf-8', (err) => {
-  				if (err) console.error(err);
-  				console.log(`${inputFile} => ${outputFile}`);
-  				console.log('done :)');
-          resolve();
-  			});
-  		}
-  	});
-  });
+	return new Promise((resolve, reject) => {
+		fs.readFile(inputFile, {
+			encoding: 'utf-8'
+		}, (err, data) => {
+			if (err) {
+				console.error(err);
+				reject(err);
+			} else {
+				// TODO add options.space
+				fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 4), 'utf-8', (err) => {
+					if (err) {
+						console.error(err);
+					}
+					console.log(`${inputFile} => ${outputFile}`);
+					console.log('done :)');
+					resolve();
+				});
+			}
+		});
+	});
 }
 
 module.exports = HerokuConnectConfigurationComb;
