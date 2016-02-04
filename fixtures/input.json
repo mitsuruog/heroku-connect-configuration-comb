@@ -1,0 +1,87 @@
+{
+    "mappings": [
+        {
+            "config": {
+                "sf_polling_seconds": 600,
+                "sf_max_daily_api_calls": 30000,
+                "access": "read_only",
+                "sf_notify_enabled": false,
+                "fields": {
+                    "Email": {},
+                    "Company": {},
+                    "Rating": {},
+                    "SystemModstamp": {},
+                    "Name": {},
+                    "CreatedDate": {},
+                    "Id": {},
+                    "Status": {},
+                    "Title": {},
+                    "FirstName": {},
+                    "IsConverted": {},
+                    "LastName": {},
+                    "IsDeleted": {}
+                }
+            },
+            "object_name": "Lead"
+        },
+        {
+            "config": {
+                "sf_polling_seconds": 600,
+                "sf_max_daily_api_calls": 30000,
+                "access": "read_only",
+                "sf_notify_enabled": false,
+                "fields": {
+                    "IsEscalated": {},
+                    "IsClosed": {},
+                    "ClosedDate": {},
+                    "Priority": {},
+                    "Type": {},
+                    "Reason": {},
+                    "CaseNumber": {},
+                    "SystemModstamp": {},
+                    "CreatedDate": {},
+                    "Id": {},
+                    "Status": {},
+                    "Description": {},
+                    "Subject": {},
+                    "IsDeleted": {},
+                    "ContactId": {}
+                }
+            },
+            "object_name": "Case"
+        },
+        {
+            "config": {
+                "sf_polling_seconds": 600,
+                "sf_max_daily_api_calls": 30000,
+                "access": "read_only",
+                "sf_notify_enabled": false,
+                "fields": {
+                    "AnnualRevenue": {},
+                    "Sic": {},
+                    "Fax": {},
+                    "Website": {},
+                    "Type": {},
+                    "OwnerId": {},
+                    "SystemModstamp": {},
+                    "Description": {},
+                    "Name": {},
+                    "PhotoUrl": {},
+                    "Industry": {},
+                    "Id": {},
+                    "Phone": {},
+                    "Site": {},
+                    "CreatedDate": {},
+                    "IsDeleted": {}
+                }
+            },
+            "object_name": "Account"
+        }
+    ],
+    "connection": {
+        "organization_id": "00DE0000000L6REMA",
+        "app_name": "heroku-connect-mitsuruog-dev",
+        "exported_at": "2016-02-03T14:57:36.514234+00:00"
+    },
+    "version": 1
+}

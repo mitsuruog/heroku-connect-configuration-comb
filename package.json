@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "ava": "^0.8.0",
+    "mkdirp": "^0.5.1",
     "xo": "^0.12.1"
   }
 }
