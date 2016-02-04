@@ -17,4 +17,4 @@ var cli = meow([
 	'  ponies & rainbows'
 ]);
 
-console.log(herokuConnectConfigurationComb(cli.input[0], cli.input[1]));
+herokuConnectConfigurationComb(cli.input[0], cli.input[1]);
