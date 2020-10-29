@@ -5,7 +5,7 @@ function alphabeticalOrder(data) {
 	if (Array.isArray(data)) {
 		return data.map((row) => alphabeticalOrder(row));
 	}
-	if (data !== null && typeof data === 'object') {
+	if (data instanceof Object) {
 		const keys = Object.keys(data).sort((a, b) => a.localeCompare(b));
 		let sortedData = {};
 		keys.forEach((key) => {
