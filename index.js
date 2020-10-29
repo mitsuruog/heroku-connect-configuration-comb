@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync } from "fs";
+import { join } from "path";
 
 function alphabeticalOrder(data) {
 	if (Array.isArray(data)) {
@@ -24,21 +24,24 @@ function alphabeticalOrderByObjectName(data) {
 	return sortedData;
 }
 
-function HerokuConnectConfigurationComb(input, output, opts) {
+function HerokuConnectConfigurationComb(input, output) {
 	// TODO validation
 
-	opts = opts || {};
 	output = output || input;
 
-	const encoding = 'utf-8';
+	const encoding = "utf-8";
 	const inputFile = join(process.cwd(), input);
 	const outputFile = join(process.cwd(), output);
 
 	const inputJson = readFileSync(inputFile, encoding);
-	const outputJson = JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(inputJson))), null, 4);
+	const outputJson = JSON.stringify(
+		alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(inputJson))),
+		null,
+		4
+	);
 	writeFileSync(outputFile, outputJson, encoding);
 	console.log(`${inputFile} => ${outputFile}`);
-	console.log('done :)');
+	console.log("done :)");
 }
 
 export default HerokuConnectConfigurationComb;
