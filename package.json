@@ -28,11 +28,11 @@
     "heroku connect"
   ],
   "dependencies": {
-    "meow": "^3.6.0"
+    "meow": "^8.0.0"
   },
   "devDependencies": {
-    "ava": "^0.8.0",
-    "mkdirp": "^0.5.1",
-    "xo": "^0.12.1"
+    "ava": "^3.13.0",
+    "mkdirp": "^1.0.4",
+    "xo": "^0.34.1"
   }
 }
