@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-'use strict';
-var meow = require('meow');
-var herokuConnectConfigurationComb = require('./');
+import meow from 'meow';
+import herokuConnectConfigurationComb from './index.js';
 
 var cli = meow([
 	'Usage',

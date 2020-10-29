@@ -1,7 +1,5 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
 
 function alphabeticalOrder(data) {
 	if (Array.isArray(data)) {
@@ -32,29 +30,15 @@ function HerokuConnectConfigurationComb(input, output, opts) {
 	opts = opts || {};
 	output = output || input;
 
-	const inputFile = path.join(process.cwd(), input);
-	const outputFile = path.join(process.cwd(), output);
+	const encoding = 'utf-8';
+	const inputFile = join(process.cwd(), input);
+	const outputFile = join(process.cwd(), output);
 
-	return new Promise((resolve, reject) => {
-		fs.readFile(inputFile, {
-			encoding: 'utf-8'
-		}, (err, data) => {
-			if (err) {
-				console.error(err);
-				reject(err);
-			} else {
-				// TODO add options.space
-				fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 4), 'utf-8', (err) => {
-					if (err) {
-						console.error(err);
-					}
-					console.log(`${inputFile} => ${outputFile}`);
-					console.log('done :)');
-					resolve();
-				});
-			}
-		});
-	});
+	const inputJson = readFileSync(inputFile, encoding);
+	const outputJson = JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(inputJson))), null, 4);
+	writeFileSync(outputFile, outputJson, encoding);
+	console.log(`${inputFile} => ${outputFile}`);
+	console.log('done :)');
 }
 
-module.exports = HerokuConnectConfigurationComb;
+export default HerokuConnectConfigurationComb;
