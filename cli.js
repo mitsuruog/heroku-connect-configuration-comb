@@ -2,7 +2,7 @@
 import meow from 'meow';
 import herokuConnectConfigurationComb from './index.js';
 
-var cli = meow([
+const cli = meow([
 	'Usage',
 	'  $ heroku-connect-configuration-comb [input] [output]',
 	'',

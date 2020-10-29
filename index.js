@@ -7,7 +7,7 @@ function alphabeticalOrder(data) {
 	}
 	if (data instanceof Object) {
 		const keys = Object.keys(data).sort((a, b) => a.localeCompare(b));
-		let sortedData = {};
+		const sortedData = {};
 		keys.forEach((key) => {
 			sortedData[key] = alphabeticalOrder(data[key]);
 		});
@@ -17,7 +17,7 @@ function alphabeticalOrder(data) {
 }
 
 function alphabeticalOrderByObjectName(data) {
-	let sortedData = JSON.parse(JSON.stringify(data));
+	const sortedData = JSON.parse(JSON.stringify(data));
 	sortedData.mappings = data.mappings.sort((a, b) => {
 		return a.object_name.localeCompare(b.object_name);
 	});
