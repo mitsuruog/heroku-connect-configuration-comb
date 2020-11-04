@@ -1,14 +1,15 @@
 import test from "ava";
 import testee from "./index.js";
-import { readFileSync } from "fs";
-import mkdirp from "mkdirp";
+import { mkdirSync, readFileSync, rmdirSync } from "fs";
 
 const ENCODING = "utf-8";
+const TEMP_PATH = "./.tmp";
 const INPUT_PATH = "./fixtures/input.json";
 const OUTPUT_PATH = "./.tmp/output.json";
 
 test.before(() => {
-	mkdirp("./.tmp");
+	rmdirSync(TEMP_PATH, { recursive: true });
+	mkdirSync(TEMP_PATH, { recursive: true });
 });
 
 test.serial("Should output file be beautiful ", (t) => {
