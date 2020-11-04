@@ -1,15 +1,13 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, writeFileSync } from "fs";
+import { join } from "path";
 
 function alphabeticalOrder(data) {
 	if (Array.isArray(data)) {
 		return data.map((row) => alphabeticalOrder(row));
 	}
-	if (data !== null && typeof data === 'object') {
+	if (data instanceof Object) {
 		const keys = Object.keys(data).sort((a, b) => a.localeCompare(b));
-		let sortedData = {};
+		const sortedData = {};
 		keys.forEach((key) => {
 			sortedData[key] = alphabeticalOrder(data[key]);
 		});
@@ -19,42 +17,31 @@ function alphabeticalOrder(data) {
 }
 
 function alphabeticalOrderByObjectName(data) {
-	let sortedData = JSON.parse(JSON.stringify(data));
+	const sortedData = JSON.parse(JSON.stringify(data));
 	sortedData.mappings = data.mappings.sort((a, b) => {
 		return a.object_name.localeCompare(b.object_name);
 	});
 	return sortedData;
 }
 
-function HerokuConnectConfigurationComb(input, output, opts) {
+function HerokuConnectConfigurationComb(input, output) {
 	// TODO validation
 
-	opts = opts || {};
 	output = output || input;
 
-	const inputFile = path.join(process.cwd(), input);
-	const outputFile = path.join(process.cwd(), output);
+	const encoding = "utf-8";
+	const inputFile = join(process.cwd(), input);
+	const outputFile = join(process.cwd(), output);
 
-	return new Promise((resolve, reject) => {
-		fs.readFile(inputFile, {
-			encoding: 'utf-8'
-		}, (err, data) => {
-			if (err) {
-				console.error(err);
-				reject(err);
-			} else {
-				// TODO add options.space
-				fs.writeFile(outputFile, JSON.stringify(alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(data))), null, 4), 'utf-8', (err) => {
-					if (err) {
-						console.error(err);
-					}
-					console.log(`${inputFile} => ${outputFile}`);
-					console.log('done :)');
-					resolve();
-				});
-			}
-		});
-	});
+	const inputJson = readFileSync(inputFile, encoding);
+	const outputJson = JSON.stringify(
+		alphabeticalOrderByObjectName(alphabeticalOrder(JSON.parse(inputJson))),
+		null,
+		4
+	);
+	writeFileSync(outputFile, outputJson, encoding);
+	console.log(`${inputFile} => ${outputFile}`);
+	console.log("done :)");
 }
 
-module.exports = HerokuConnectConfigurationComb;
+export default HerokuConnectConfigurationComb;

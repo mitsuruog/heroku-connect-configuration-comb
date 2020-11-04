@@ -11,11 +11,14 @@
   },
   "bin": "cli.js",
   "engines": {
-    "node": ">=4.2.0"
+    "node": ">=12"
   },
   "engineStrict": true,
+  "type": "module",
   "scripts": {
-    "test": "xo && ava"
+    "lint": "eslint './**/*.js'",
+    "lint:fix": "eslint --fix './**/*.js'",
+    "test": "ava"
   },
   "files": [
     "index.js",
@@ -28,11 +31,17 @@
     "heroku connect"
   ],
   "dependencies": {
-    "meow": "^3.6.0"
+    "meow": "^8.0.0"
   },
   "devDependencies": {
-    "ava": "^0.8.0",
-    "mkdirp": "^0.5.1",
-    "xo": "^0.12.1"
+    "ava": "^3.13.0",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier": "^2.1.2"
   }
 }
